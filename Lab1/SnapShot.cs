@@ -17,11 +17,21 @@ namespace Lab1
         }
 
         /**
-         * Old TextStorage is restored using a memento object
+         * Old TextStorage is restored using a memento object.
+         * Makes sure that text is empty if a backup doesn't exist.
         */
         public void Restore()
         {
-            textStorage.RestoreStorage(text);
+            SnapShot backup = SnapShotStack.PopFromStack();
+
+            if (backup == null)
+            {
+                textStorage.RestoreStorage("");
+            }
+            else 
+            {
+                textStorage.RestoreStorage(backup.text);
+            }
         }
     }
 }

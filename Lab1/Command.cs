@@ -10,6 +10,7 @@ namespace Lab1
         public void MakeBackup(TextStorage storage)
         {
             backup = storage.CreateSnapshot();
+            SnapShotStack.PushToStack(backup);
         }
 
         public void Undo()

@@ -8,16 +8,15 @@ namespace Lab1
 
         static string input;
 
-        static TextStorage storage;
+        static TextStorage storage = new TextStorage();
 
-        static Command command;
+        static Command command = new Command();
 
 
         static void Main(string[] args)
         {
             shouldQuit = false;
-            storage = new TextStorage();
-            command = new Command();
+
             RunProgram();
         }
 
@@ -33,6 +32,12 @@ namespace Lab1
             }
         }
 
+        /**
+         * Gets the user's input. if it corresponds to 
+         * one of the three command words, that method
+         * is called. If nothing matched, the program 
+         * informs the user of this.
+        */
         static void GetUserCommand()
         {
             Console.WriteLine("Select one of the following options:");
@@ -54,11 +59,15 @@ namespace Lab1
                     Quit();
                     break;
                 default:
-                    Console.WriteLine("Please try again...\n");
+                    Console.WriteLine("Not a valid command... Please try again!\n");
                     break;
             }
         }
 
+        /**
+         * Makes a backup of what the user enters
+         * in terminal. The text is added to the TextStorage.
+        */
         static void Add()
         {
             Console.Write("\nEnter text here: ");
@@ -73,11 +82,18 @@ namespace Lab1
             storage.SetText(input);
         }
 
+        /**
+         * Uses an instance of the Command class to 
+         * retrieve a previous SnapShot from stack
+        */
         static void Undo()
         {
             command.Undo();
         }
 
+        /**
+         * Terminates program execution
+         */
         static void Quit()
         {
             Console.Write("\nExiting program...");
