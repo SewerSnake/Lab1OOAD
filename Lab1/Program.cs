@@ -6,6 +6,8 @@ namespace Lab1
     {
         static bool shouldQuit;
 
+        static string input;
+
         static TextStorage storage;
 
         static Command command;
@@ -26,7 +28,7 @@ namespace Lab1
         {
             while (!shouldQuit)
             {
-                Console.WriteLine($"Current text: {storage.GetText()}\n");
+                Console.WriteLine($"\nCurrent text: {storage.GetText()}\n");
                 GetUserCommand();
             }
         }
@@ -38,7 +40,7 @@ namespace Lab1
             Console.WriteLine("undo");
             Console.WriteLine("quit\n");
 
-            string input = Console.ReadLine().ToLower();
+            input = Console.ReadLine().ToLower();
 
             switch(input)
             {
@@ -59,17 +61,16 @@ namespace Lab1
 
         static void Add()
         {
-            String textToAdd = Console.ReadLine();
             Console.Write("\nEnter text here: ");
 
-            textToAdd = Console.ReadLine();
+            input = Console.ReadLine();
 
             if (storage.GetText() != null)
             {
                 command.MakeBackup(storage);
             }
 
-            storage.SetText(textToAdd);
+            storage.SetText(input);
         }
 
         static void Undo()
