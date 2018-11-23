@@ -66,7 +66,8 @@ namespace Lab1
 
         /**
          * Makes a backup of what the user enters
-         * in terminal. The text is added to the TextStorage.
+         * in terminal. The text is added to 
+         * the TextStorage object.
         */
         static void Add()
         {
