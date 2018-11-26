@@ -13,7 +13,7 @@ namespace Lab1
          * The two parameters are assigned.
          * 
          * parameter textStorage: The TextStorage object to save
-         * parameter text: The string which the user wrote in terminal
+         * parameter text: The string which the user wrote in console
         */
         public SnapShot(TextStorage textStorage, string text)
         {

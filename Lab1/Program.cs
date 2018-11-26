@@ -40,10 +40,7 @@ namespace Lab1
         */
         static void GetUserCommand()
         {
-            Console.WriteLine("Select one of the following options:");
-            Console.WriteLine("add");
-            Console.WriteLine("undo");
-            Console.WriteLine("quit\n");
+            PrintMenu();
 
             input = Console.ReadLine().ToLower();
 
@@ -58,6 +55,8 @@ namespace Lab1
                 case "quit":
                     Quit();
                     break;
+                case "redo":
+                    break;
                 default:
                     Console.WriteLine("Not a valid command... Please try again!\n");
                     break;
@@ -65,8 +64,20 @@ namespace Lab1
         }
 
         /**
+         * Prints all of the menu options to console.
+        */
+        static void PrintMenu()
+        {
+            Console.WriteLine("Select one of the following options:");
+            Console.WriteLine("add");
+            Console.WriteLine("undo");
+            Console.WriteLine("redo");
+            Console.WriteLine("quit\n");
+        }
+
+        /**
          * Makes a backup of what the user enters
-         * in terminal. The text is added to 
+         * in the console. The text is added to 
          * the TextStorage object.
         */
         static void Add()
