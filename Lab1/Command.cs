@@ -9,14 +9,18 @@ namespace Lab1
 
         /**
          * Makes a backup by creating a snapshot 
-         * of the provided TextStorage.
+         * of the provided TextStorage. This only
+         * occurs if the user has written something.
          * 
          * parameter storage: The TextStorage object to create a backup of
         */
         public void MakeBackup(TextStorage storage)
         {
-            backup = storage.CreateSnapshot();
-            SnapShotStack.PushToStack(backup);
+            if (storage.GetText() != null)
+            {
+                backup = storage.CreateSnapshot();
+                SnapShotStack.PushToStack(backup);
+            }
         }
 
         /**
@@ -29,6 +33,14 @@ namespace Lab1
             {
                 backup.Restore();
             }
+        }
+
+        /**
+         * 
+        */
+        public void Redo()
+        {
+
         }
     }
 }

@@ -86,11 +86,8 @@ namespace Lab1
 
             input = Console.ReadLine();
 
-            if (storage.GetText() != null)
-            {
-                command.MakeBackup(storage);
-            }
-
+            command.MakeBackup(storage);
+           
             storage.SetText(input);
         }
 
@@ -101,6 +98,15 @@ namespace Lab1
         static void Undo()
         {
             command.Undo();
+        }
+
+        /**
+         * Uses an instance of the Command class to
+         * 
+        */
+        static void Redo()
+        {
+            command.Redo();
         }
 
         /**
