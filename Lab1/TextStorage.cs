@@ -18,7 +18,7 @@ namespace Lab1
         /**
          * Setter method for the text string. 
          * The new string is added to the end of
-         * the previous string. Becomes an emty string
+         * the previous string. Becomes an empty string
          * if the contents of _text is null.
          * 
          * parameter text: The new text to add

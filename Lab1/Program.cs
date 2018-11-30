@@ -52,10 +52,11 @@ namespace Lab1
                 case "undo":
                     Undo();
                     break;
+                case "redo":
+                    Redo();
+                    break;
                 case "quit":
                     Quit();
-                    break;
-                case "redo":
                     break;
                 default:
                     Console.WriteLine("Not a valid command... Please try again!\n");
@@ -93,7 +94,7 @@ namespace Lab1
 
         /**
          * Uses an instance of the Command class to 
-         * retrieve a previous SnapShot from stack
+         * retrieve an older SnapShot from stack.
         */
         static void Undo()
         {
@@ -102,7 +103,7 @@ namespace Lab1
 
         /**
          * Uses an instance of the Command class to
-         * 
+         * retrieve a newer SnapShot from stack.
         */
         static void Redo()
         {

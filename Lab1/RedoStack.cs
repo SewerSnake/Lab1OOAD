@@ -2,35 +2,53 @@
 
 namespace Lab1
 {
-    public static class SnapShotStack
+    public static class RedoStack
     {
-        static readonly Stack stack = new Stack();
+        static readonly Stack redoStack = new Stack();
 
 
         /**
          * Places the provided SnapShot on top
          * of the stack.
+         * 
          * parameter snapShot: The one to put on top of the stack
         */
         public static void PushToStack(SnapShot snapShot)
         {
-            stack.Push(snapShot);
+            if (snapShot != null)
+            {
+                redoStack.Push(snapShot);
+            }
+        }
+
+        /**
+         * Gets the SnapShot that is at the top
+         * of the Stack without removing it.
+        */
+        public static SnapShot PeekAtStack()
+        {
+            if (redoStack.Count == 0)
+            {
+                return null;
+            }
+            return (SnapShot) redoStack.Peek();
         }
 
         /**
          * Gets the SnapShot that is at the top
          * of the Stack. It is also removed entirely from the stack.
+         * 
          * Returns a SnapShot unless the number of 
          * objects in stack are zero. Then, null is returned.
         */
         public static SnapShot PopFromStack()
         {
-            if (stack.Count == 0)
+            if (redoStack.Count == 0)
             {
                 return null;
             }
 
-            return (SnapShot) stack.Pop();
+            return (SnapShot) redoStack.Pop();
         }
     }
 }

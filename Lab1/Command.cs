@@ -9,38 +9,44 @@ namespace Lab1
 
         /**
          * Makes a backup by creating a snapshot 
-         * of the provided TextStorage. This only
-         * occurs if the user has written something.
+         * of the provided TextStorage. 
          * 
          * parameter storage: The TextStorage object to create a backup of
         */
         public void MakeBackup(TextStorage storage)
         {
-            if (storage.GetText() != null)
-            {
-                backup = storage.CreateSnapshot();
-                SnapShotStack.PushToStack(backup);
-            }
+            backup = storage.CreateSnapshot();
+            UndoStack.PushToStack(backup);
         }
 
         /**
          * If there exists a backup, it will be used to obtain
-         * text previously written by the user.
+         * older text written by the user.
         */
         public void Undo()
         {
             if (backup != null)
             {
-                backup.Restore();
+                backup.Undo();
+            } 
+            else
+            {
+                Console.WriteLine("There is nothing to undo...\n");
             }
         }
 
         /**
-         * 
+         * If there exists a backup, it will be used to obtain
+         * newer text written by the user.
         */
         public void Redo()
         {
-
+            if (backup != null)
+            {
+                backup.Redo();
+            } else {
+                Console.WriteLine("There is nothing to redo...\n");
+            }
         }
     }
 }

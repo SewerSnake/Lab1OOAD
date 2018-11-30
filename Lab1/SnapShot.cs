@@ -22,18 +22,38 @@ namespace Lab1
         }
 
         /**
-         * Old TextStorage is restored using a memento object.
+         * An older TextStorage is loaded using a memento object.
+         * Allows Redo functionality by saving this SnapShot
+         * to another stack.
          * Makes sure that text is empty if a backup doesn't exist.
         */
-        public void Restore()
+        public void Undo()
         {
-            SnapShot backup = SnapShotStack.PopFromStack();
+            if (UndoStack.PeekAtStack() != null)
+            {
+                RedoStack.PushToStack(UndoStack.PeekAtStack());
+            }
+
+            SnapShot backup = UndoStack.PopFromStack();
 
             if (backup == null)
             {
                 textStorage.RestoreStorage("");
             }
             else 
+            {
+                textStorage.RestoreStorage(backup.text);
+            }
+        }
+
+        /**
+         * A newer TextStorage is loaded using a memento object.
+        */
+        public void Redo()
+        {
+            SnapShot backup = RedoStack.PopFromStack();
+
+            if (backup != null)
             {
                 textStorage.RestoreStorage(backup.text);
             }
