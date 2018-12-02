@@ -8,6 +8,14 @@ namespace Lab1
 
 
         /**
+         * Returns true if the stack is completely empty
+        */       
+        public static bool IsEmpty()
+        {
+            return undoStack.Count == 0;
+        }
+
+        /**
          * Places the provided SnapShot on top
          * of the stack.
          * 

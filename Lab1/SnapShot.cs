@@ -8,7 +8,7 @@ namespace Lab1
 
         readonly string text;
 
-
+       
         /**
          * The two parameters are assigned.
          * 

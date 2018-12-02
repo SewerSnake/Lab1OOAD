@@ -25,10 +25,13 @@ namespace Lab1
         */
         public void Undo()
         {
-            if (backup != null)
+            if (!UndoStack.IsEmpty())
             {
-                backup.Undo();
-            } 
+                if (backup != null)
+                {
+                    backup.Undo();
+                }
+            }
             else
             {
                 Console.WriteLine("There is nothing to undo...\n");
@@ -41,10 +44,15 @@ namespace Lab1
         */
         public void Redo()
         {
-            if (backup != null)
+            if (!RedoStack.IsEmpty())
             {
-                backup.Redo();
-            } else {
+                if (backup != null)
+                {
+                    backup.Redo();
+                }
+            }
+            else 
+            {
                 Console.WriteLine("There is nothing to redo...\n");
             }
         }
